@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javaapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: javaapi
+  template:
+    metadata:
+      labels:
+        app: javaapi
+    spec:
+      containers:
+        - name: javaapi
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          env:
+          - name: SPRING_PROFILE
+            value: "{{ .Values.env.SPRING_PROFILE }}"
+          command: ["java", "-Dspring.profiles.active=$(SPRING_PROFILE)", "-jar", "app.jar"]

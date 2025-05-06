@@ -1,37 +1,29 @@
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app-services-ingress
-  namespace: default
+  name: app-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: react-ui.local
+    - host: your-domain.com
       http:
         paths:
-          - path: /
+          - path: /react
             pathType: Prefix
             backend:
               service:
                 name: react-ui
                 port:
                   number: 3000
-    - host: nodeapi.local
-      http:
-        paths:
-          - path: /
+          - path: /node
             pathType: Prefix
             backend:
               service:
                 name: nodeapi
                 port:
                   number: 3000
-    - host: javaapi.local
-      http:
-        paths:
-          - path: /
+          - path: /java
             pathType: Prefix
             backend:
               service:

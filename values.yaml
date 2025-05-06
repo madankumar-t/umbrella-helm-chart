@@ -1,27 +1,22 @@
-
 react-ui:
-  replicaCount: 1
   image:
-    repository: react-ui-image
+    repository: core-sandbox-react-ui_1.1.0-feature-mo-ARCH-228-alt-SNAPSHOT_740d96bd
     tag: latest
   service:
-    type: ClusterIP
     port: 3000
 
 nodeapi:
-  replicaCount: 1
   image:
-    repository: node-api-image
+    repository: core-sandbox-node-facade_1.1.0-feature-mo-ARCH-228-alt-SNAPSHOT_740d96bd
     tag: latest
   service:
-    type: ClusterIP
     port: 3000
 
 javaapi:
-  replicaCount: 1
   image:
-    repository: java-api-image
+    repository: core-sandbox-java-service_1.1.0-feature-mo-ARCH-228-alt-SNAPSHOT_740d96bd
     tag: latest
   service:
-    type: ClusterIP
     port: 8080
+  env:
+    SPRING_PROFILE: dev
