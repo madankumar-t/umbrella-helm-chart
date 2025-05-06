@@ -1,0 +1,27 @@
+
+react-ui:
+  replicaCount: 1
+  image:
+    repository: react-ui-image
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 3000
+
+nodeapi:
+  replicaCount: 1
+  image:
+    repository: node-api-image
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 3000
+
+javaapi:
+  replicaCount: 1
+  image:
+    repository: java-api-image
+    tag: latest
+  service:
+    type: ClusterIP
+    port: 8080

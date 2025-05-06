@@ -1,0 +1,15 @@
+
+apiVersion: v2
+name: app-services-stack
+description: A Helm chart to manage Node API, React UI, and Java API services
+version: 0.1.0
+dependencies:
+  - name: react-ui
+    version: 0.1.0
+    repository: file://charts/react-ui
+  - name: nodeapi
+    version: 0.1.0
+    repository: file://charts/nodeapi
+  - name: javaapi
+    version: 0.1.0
+    repository: file://charts/javaapi
