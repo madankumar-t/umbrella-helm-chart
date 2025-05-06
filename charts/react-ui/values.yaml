@@ -1,5 +1,5 @@
 image:
-  repository: REPLACE_ME
+  repository: your-registry/react-ui
   tag: latest
 service:
-  port: REPLACE_ME
+  port: 3000

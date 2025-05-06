@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeapi
+  name: { include "nodeapi.fullname" . }
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodeapi
+      app: { include "nodeapi.name" . }
   template:
     metadata:
       labels:
-        app: nodeapi
+        app: { include "nodeapi.name" . }
     spec:
       containers:
         - name: nodeapi
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{ .Values.image.repository }:{ .Values.image.tag }"
           ports:
-            - containerPort: {{ .Values.service.port }}
-          command: ["node", "dist/main"]
+            - containerPort: { .Values.service.port }

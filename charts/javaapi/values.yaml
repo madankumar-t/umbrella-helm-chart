@@ -1,5 +1,5 @@
 image:
-  repository: REPLACE_ME
+  repository: your-registry/javaapi
   tag: latest
 service:
-  port: REPLACE_ME
+  port: 8080

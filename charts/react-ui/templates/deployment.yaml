@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-ui
+  name: { include "react-ui.fullname" . }
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: react-ui
+      app: { include "react-ui.name" . }
   template:
     metadata:
       labels:
-        app: react-ui
+        app: { include "react-ui.name" . }
     spec:
       containers:
         - name: react-ui
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{ .Values.image.repository }:{ .Values.image.tag }"
           ports:
-            - containerPort: {{ .Values.service.port }}
-          command: ["npm", "run", "dev"]
+            - containerPort: { .Values.service.port }

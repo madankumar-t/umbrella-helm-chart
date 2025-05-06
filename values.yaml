@@ -1,22 +1,34 @@
+javaapi:
+  image:
+    repository: your-registry/javaapi
+    tag: latest
+  service:
+    port: 8080
+
 react-ui:
   image:
-    repository: core-sandbox-react-ui_1.1.0-feature-mo-ARCH-228-alt-SNAPSHOT_740d96bd
+    repository: your-registry/react-ui
     tag: latest
   service:
     port: 3000
 
 nodeapi:
   image:
-    repository: core-sandbox-node-facade_1.1.0-feature-mo-ARCH-228-alt-SNAPSHOT_740d96bd
+    repository: your-registry/nodeapi
     tag: latest
   service:
     port: 3000
 
-javaapi:
-  image:
-    repository: core-sandbox-java-service_1.1.0-feature-mo-ARCH-228-alt-SNAPSHOT_740d96bd
-    tag: latest
-  service:
-    port: 8080
-  env:
-    SPRING_PROFILE: dev
+ingress:
+  enabled: true
+  host: myapp.example.com
+  paths:
+    - path: /api
+      serviceName: javaapi
+      servicePort: 8080
+    - path: /ui
+      serviceName: react-ui
+      servicePort: 3000
+    - path: /node
+      serviceName: nodeapi
+      servicePort: 3000
